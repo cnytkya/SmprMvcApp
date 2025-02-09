@@ -1,0 +1,30 @@
+﻿@model ProductViewModel
+
+<div class="border p-3 mt-3">
+    <h2 class="text-danger">Delete Product</h2>
+    <hr />
+    <div>
+        <strong>Title:</strong> @Model.Product.Title
+    </div>
+    <div>
+        <strong>Author:</strong> @Model.Product.Author
+    </div>
+    <div>
+        <strong>Category:</strong> @Model.Product.Category.Name
+    </div>
+    <div>
+        <img src="@Model.Product.ImageUrl" alt="Product Image" width="200" class="img-thumbnail mt-2" />
+    </div>
+
+    <form id="deleteForm" asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Product.Id" />
+        <div class="mt-3">
+            <button type="button" id="deleteButton" class="btn btn-danger">Yes, Delete</button>
+            <a asp-action="Index" class="btn btn-info">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/product.js"></script>
+}

@@ -1,0 +1,27 @@
+﻿@model Company
+
+<div class="border p-3 mt-3">
+    <h2 class="text-danger">Delete Company</h2>
+    <hr />
+    <div>
+        <strong>Name:</strong> @Model.Name
+    </div>
+    <div>
+        <strong>Address:</strong> @Model.StreetAddress
+    </div>
+    <div>
+        <strong>State:</strong> @Model.State
+    </div>
+
+    <form id="deleteForm" asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="mt-3">
+            <button type="button" id="deleteButton" class="btn btn-danger">Yes, Delete</button>
+            <a asp-action="Index" class="btn btn-info">Cancel</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/product.js"></script>
+}

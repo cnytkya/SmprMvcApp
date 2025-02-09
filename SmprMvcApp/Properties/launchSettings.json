@@ -1,0 +1,39 @@
+﻿{
+  //Bu dosya, ASP.NET Core projelerinde geliştirme ve çalıştırma ayarlarını tanımlayan bir launchSettings.json dosyasıdır.
+  "$schema": "http://json.schemastore.org/launchsettings.json", //Bu satır, dosyanın yapısını belirleyen şemayı tanımlar. json.schemastore.org adresinden launchsettings.json şemasını kullanır. Bu, dosyanın doğrulama sürecinde kullanılacak yapıyı tanımlar.
+  "iisSettings": { // Projenin IIS Express ile çalıştırıldığında geçerli olacak ayarları içerir
+    "windowsAuthentication": false, //Windows kimlik doğrulamasını açıp kapatır. Burada false olarak ayarlanmış, yani devre dışı.
+    "anonymousAuthentication": true, //Anonim kimlik doğrulamasını etkinleştirir. true olarak ayarlanmış, bu nedenle anonim erişime izin veriliyor.
+    "iisExpress": { //IIS Express ile çalıştırma ayarlarını içerir
+      "applicationUrl": "http://localhost:6026", // IIS Express ile çalıştırıldığında uygulamanın çalışacağı URL.
+      "sslPort": 44310 //SSL kullanarak güvenli bağlantı için belirlenen port numarası. Burada 44310 olarak ayarlanmış.
+    }
+  },
+  "profiles": { // Farklı çalışma profillerini içerir. Her profil, projeyi başlatmak için farklı ayarlar tanımlar. Burada üç profil var: http, https ve IIS Express.
+    "http": {
+      "commandName": "Project", //Projenin nasıl çalıştırılacağını belirler. Project değeri, projeyi dotnet run komutuyla çalıştırır.
+      "dotnetRunMessages": true, //dotnetRunMessages: true olarak ayarlanmış, bu sayede uygulama çalışırken dotnet run çıktısı gösterilir.
+      "launchBrowser": true, //launchBrowser: true olarak ayarlanmış, bu sayede uygulama başlatıldığında varsayılan tarayıcı otomatik olarak açılır.
+      "applicationUrl": "http://localhost:5096", //Uygulamanın başlatılacağı URL.
+      "environmentVariables": { //Çevresel değişkenleri tanımlar. Burada ASPNETCORE_ENVIRONMENT değişkeni Development olarak ayarlanmış; bu, geliştirme ortamında çalışmayı belirtir.
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:7287;http://localhost:5096",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  
+  <!-- Proje için kullanılan SDK türü. Bu durumda, web uygulamaları için gerekli bileşenleri içeren Microsoft.NET.Sdk.Web SDK'sı kullanılıyor. -->
+  <PropertyGroup>
+    
+    <!-- Hedef çerçeve sürümü. Proje .NET 8.0 ile uyumlu olacak şekilde derlenecek. -->
+    <TargetFramework>net8.0</TargetFramework>
+    
+    <!-- Nullable referans türlerini etkinleştirir. Bu, null değeri alabilecek veya alamayacak türlerin derleyici tarafından kontrol edilmesini sağlar. -->
+    <Nullable>enable</Nullable>
+    
+    <!-- Common using ifadelerinin (System, System.Collections.Generic, vb.) otomatik olarak eklenmesini sağlar. Bu sayede temel kütüphaneler için `using` ifadelerini manuel olarak yazmaya gerek kalmaz. -->
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="wwwroot\Eflyer\**" />
+    <Content Remove="wwwroot\Eflyer\**" />
+    <EmbeddedResource Remove="wwwroot\Eflyer\**" />
+    <None Remove="wwwroot\Eflyer\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+    <PackageReference Include="Stripe.net" Version="47.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\SmprMvcApp.Common\SmprMvcApp.Common.csproj" />
+    <ProjectReference Include="..\Data\SmprMvcApp.DAL\SmprMvcApp.DAL.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\images\product\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Areas\Identity\Pages\Account\Manage\_ViewStart.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

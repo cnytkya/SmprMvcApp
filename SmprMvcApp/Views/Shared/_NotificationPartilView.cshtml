@@ -1,0 +1,47 @@
+﻿@* Bütün sayfalarda kullanabileceğimiz bir Partial View tasarımını aşağıdaki gibi yazdık. Daha sonra bunu Views/Shared/_Layout.cshtml'e bildirmemiz gerekir. Render edilirken bütün html sayfalarında bu bildirimler gözükecektir. Burda da DRY'yi uyguladık yani don't repeat yourself(kendini tekrar etme)
+DRY (Don't Repeat Yourself), yazılım geliştirme sürecinde tekrarlanan kod veya mantık parçalarını önlemek için benimsenen bir tasarım prensibidir. Amaç, yazılımı daha modüler, bakımı kolay ve hata oranı düşük hale getirmektir.*@
+
+@if (TempData["success"] != null)
+{
+    <div id="successAlertId" class="alert alert-success alert-dismissible fade show position-fixed end-0 top-0 m-3 custom-alert" role="alert" style="width: 350px;">
+        @TempData["success"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["error"] != null)
+{
+    <div id="errorAlertId" class="alert alert-danger alert-dismissible fade show position-fixed end-0 top-0 m-3 custom-alert" role="alert" style="width: 500px;">
+        @TempData["error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@* js kodlarımı yazabileceğim bir my.js dosyası oluşturdum. bu dosyayı istediğim her yerde kullanabilirim. *@
+//my.js dosyasını _Layout.cshtml dosyasına aldığımızda yine 
+@* <script src="~/js/my.js"></script> *@
+
+
+@* aşağıdakini bootstrap.css içerisine aldık. *@
+
+
+@* <style>
+    .custom-alert {
+        position: relative; /* Pseudo-element için konumlama */
+        border-radius: 10px; /* Genel köşeler */
+    }
+
+        .custom-alert::after {
+            content: '';
+            position: absolute;
+            bottom: -10px; /* Kutunun altından çıkıntı */
+            left: 50%; /* Ortalamak için */
+            transform: translateX(-50%); /* Tam ortalamak için */
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent; /* Üçgenin sol kenarı */
+            border-right: 10px solid transparent; /* Üçgenin sağ kenarı */
+            border-top: 10px solid currentColor; /* Üçgenin yukarıya bakan kenarı */
+        }
+</style>  *@
+

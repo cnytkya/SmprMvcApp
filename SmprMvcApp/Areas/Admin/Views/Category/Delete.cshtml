@@ -1,0 +1,26 @@
+﻿@model Category
+
+<form method="post">
+    <div class="border p-3 mt-3">
+        <div class="row pb-2 mt-4">
+            <h2 class="text-primary">Delete Category</h2>
+            <hr />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Name" class="p-0"></label>
+            <input asp-for="Name" type="text" disabled class="form-control" />@* kullanıcı hiç bir şeyi düzenleyemesin diye disabled yani input'u burda disactive ettik ki kullanıcı bir değer giremesin diye*@
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="DisplayOrder" class="p-0"></label>
+            <input asp-for="DisplayOrder" disabled class="form-control" />
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-danger form-control">Delete</button>
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-primary form-control">Bact To List</a>
+            </div>
+        </div>
+    </div>
+</form>

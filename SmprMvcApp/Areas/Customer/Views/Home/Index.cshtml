@@ -1,0 +1,74 @@
+﻿@using System.Globalization
+@model IEnumerable<Product>
+
+<div class="row pb-3">
+    @foreach (var product in Model)
+    {
+        <div class="col-lg-3 col-sm-6">
+            <div class="row p-2">
+                <div class="col-12 p-1">
+                    <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                        <img src="@product.ImageUrl" class="card-img-top rounded" />
+                        <div class="card-body pb-0">
+                            <div class="pl-1">
+                                <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@product.Title</p>
+                                <p class="card-title text-warning text-center">@product.Author</p>
+                            </div>
+                            @* <div class="pl-1">
+                                 <p class="text-dark text-opacity-75 text-center">
+                                    Fiyat <span style="text-decoration: line-through;">@product.Price100.ToString("c", CultureInfo.GetCultureInfo("tr-TR"))</span>
+                                 </p>
+                            </div>
+                            <div class="pl-1">
+                                 <p class="text-dark text-opacity-75 text-center">
+                                     Kampanya Fiyatı <span>@product.ListPrice.ToString("c", CultureInfo.GetCultureInfo("tr-TR"))</span>
+                                 </p>
+                            </div> *@
+                            <div class="pl-1">
+                                <p class="text-dark text-opacity-75 text-center mb-0  price-with-slash">
+                                    Liste Fiyatı 
+                                    <span>
+                                        @product.ListPrice.ToString("c", CultureInfo.GetCultureInfo("tr-TR"))
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="pl-1">
+                                <p class="text-dark text-opacity-75 text-center">
+                                    Kampanya Fiyatı 
+                                    <span>
+                                        @product.Price100.ToString("c", CultureInfo.GetCultureInfo("tr-TR"))
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a asp-action="ProductDetails" asp-for="Customer" asp-route-productId="@product.Id" class="btn btn-primary bg-gradient border-0 form-control">
+                                Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<style>
+    .price-with-slash span { /* Fiyatın üzerine çizgi eklenecek span öğesi */
+        position: relative; /* Çizgi, bu span öğesine göre konumlanacak */
+        display: inline-block; /* Span öğesinin genişliği içeriğe göre ayarlanır */
+    }
+
+        .price-with-slash span::after { /* Span'ın sonrasına içerik ekleyen pseudo-element */
+            content: ""; /* Görünmeyen bir boş içerik ekler */
+            position: absolute; /* Çizgi, span'a göre kesin konumlandırılır */
+            top: 50%; /* Çizginin üst kenarı, span yüksekliğinin %50'sine konumlanır (ortada) */
+            left: 0; /* Çizgi span'ın sol kenarından başlar */
+            width: 100%; /* Çizgi, span'ın genişliği kadar uzanır */
+            height: 2px; /* Çizginin kalınlığı 2 piksel olarak ayarlanır */
+            background-color: red; /* Çizginin rengi kırmızı olarak belirlenir */
+            transform: rotate(-20deg); /* Çizgi, -20 derece eğimli olacak şekilde döndürülür */
+            transform-origin: center; /* Döndürme işlemi çizginin merkezinden yapılır */
+        }
+
+</style>
